@@ -1,0 +1,22 @@
+{
+  "name": "lolibrary-api-proxy",
+  "version": "1.0.0",
+  "description": "express API for lolibrary.org private filters",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mariecreel/lolibrary-api-proxy.git"
+  },
+  "author": "marie creel",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mariecreel/lolibrary-api-proxy/issues"
+  },
+  "homepage": "https://github.com/mariecreel/lolibrary-api-proxy#readme",
+  "dependencies": {
+    "express": "^4.17.3"
+  }
+}
