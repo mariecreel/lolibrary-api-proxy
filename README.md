@@ -1,11 +1,15 @@
 # lolibrary-api-proxy
+
 Node.js and express based API to serve filter data for lolibrary.org search API.
+
 ## rationale
+
 While the lolibrary search API is public, the list of filter values for each filter parameter is locked behind a password protected private API. I wanted to avoid having users log in to use the mobile lolibrary search app that I'm building, so I decided to create my own database and filter API instead.
 
 ## Routes
 
 ### `GET /filters`
+
 Returns an object containing arrays for all filters. Arrays may contain strings or numbers as described below.
 
 ```json
@@ -20,6 +24,7 @@ Returns an object containing arrays for all filters. Arrays may contain strings 
 ```
 
 ### `GET /filters/brand`
+
 Returns an object containing all possible values for the brand filter (an array of strings).
 
 ```json
@@ -27,6 +32,7 @@ Returns an object containing all possible values for the brand filter (an array 
     "brand" : ["string",...],
 }
 ```
+
 ### `GET /filters/category`
 
 Returns an object containing all possible values for the category filter (an array of strings).
@@ -36,6 +42,7 @@ Returns an object containing all possible values for the category filter (an arr
     "category" : ["string",...],
 }
 ```
+
 ### `GET /filters/colorway`
 
 Returns an object containing all possible values for the category filter (an array of strings).
@@ -45,7 +52,9 @@ Returns an object containing all possible values for the category filter (an arr
     "colorway" : ["string", ...],
 }
 ```
+
 ### `GET /filters/features`
+
 Returns an object containing all possible values for the features filter (an array of strings).
 
 ```json
@@ -53,7 +62,9 @@ Returns an object containing all possible values for the features filter (an arr
     "features" : ["string",...],
 }
 ```
+
 ### `GET /filters/tags`
+
 Returns an object containing all possible values for the tags filter (an array of strings).
 
 ```json
@@ -63,6 +74,7 @@ Returns an object containing all possible values for the tags filter (an array o
 ```
 
 ### `GET /filters/year`
+
 Returns an object containing all possible values for the year filter (an array of numbers).
 
 ```json
@@ -71,7 +83,12 @@ Returns an object containing all possible values for the year filter (an array o
 }
 ```
 
+### `POST /filters/import`
+
+Accepts a JSON payload as input and inserts values into the connected database.
+
 ## TODO
-- add support for search parameters within each route as needed. e.g, `/filters/brand?name=angelic` 
+
+- add support for search parameters within each route as needed. e.g, `/filters/brand?name=angelic`
 - pagination
 - openAPI spec
