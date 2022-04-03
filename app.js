@@ -1,15 +1,9 @@
 require('dotenv').config();
-const express = require("express");
+const express = require('express');
+const filters = require('./routes/filters/index');
 const app = express();
 
-app.get('/filters', (req, res) => {
-    return;
-});
-app.get('/filters/${name}', (req, res) => {
-    return;
-});
-app.post('/filters/import', (req, res) => {
-    return;
-});
+
+app.use('/filters', filters);
 
 app.listen(process.env.port || 3000, console.log("Server is running"));
