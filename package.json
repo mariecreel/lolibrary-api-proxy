@@ -4,7 +4,8 @@
   "description": "express API for lolibrary.org private filters",
   "main": "app.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
