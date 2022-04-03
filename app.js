@@ -6,4 +6,4 @@ const app = express();
 
 app.use('/filters', filters);
 
-app.listen(process.env.port || 3000, console.log("Server is running"));
+app.listen(process.env.PORT || 3000, console.log("Server is running"));
