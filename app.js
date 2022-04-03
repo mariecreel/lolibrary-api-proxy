@@ -13,8 +13,4 @@ app.use(auth({
 
 app.use('/filters', filters)
 
-app.get('/', (req, res) => {
-    res.send(`hello ${req.oidc.user.sub}`)
-})
-
 app.listen(process.env.PORT || 3000, console.log("Server is running"));
