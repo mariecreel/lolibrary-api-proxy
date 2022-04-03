@@ -2,7 +2,8 @@ const express = require('express')
 const { auth } = require('express-openid-connect')
 require('dotenv').config()
 const app = express()
-const filters = require('./routes/filters/index')
+const filters = require('routes/filters/index')
+const db = require('models/index.js')
 
 // see https://auth0.github.io/express-openid-connect/
 // and https://auth0.com/docs/quickstart/webapp/express#integrate-auth0
