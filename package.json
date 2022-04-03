@@ -20,7 +20,7 @@
   "dependencies": {
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
-    "express-openid-connect": "auth0/express-openid-connect",
+    "express-oauth2-jwt-bearer": "^1.1.0",
     "jest": "^27.5.1",
     "pg": "^8.7.3",
     "pg-hstore": "^2.3.4",

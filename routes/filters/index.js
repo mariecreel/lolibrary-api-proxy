@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const { requiresAuth } = require('express-openid-connect');
+const { checkJwt, checkScopes } = require('../utility/auth')
 
 router.get('/', (req, res) => {
     res.send('get all filters')
@@ -10,8 +10,8 @@ router.get('/:name', (req, res) => {
     res.send(`get ${req.params['name']}`)
 })
 
-router.post('/import', requiresAuth(), (req, res) => {
-    res.send(`import filter values (requires auth)`)
+router.post('/import', checkJwt, checkScopes, (req, res) => {
+    res.send(`this endpoint requires authorization`)
 })
 
 module.exports = router
