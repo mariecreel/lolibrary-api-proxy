@@ -1,12 +1,29 @@
 const Sequelize = require('sequelize')
-const Filter = require('filter')
+const getFilterModel = require('./filter')
 
-const sequelize = new Sequelize(process.env.DATABASE_URL + '?sslmode=no-verify')
+const connectDb = () => {
+    const sequelize = new Sequelize(process.env.DATABASE_URL + '?sslmode=no-verify')
 
-sequelize.authenticate().then(() => {
-    console.log('postgreSQL authorized')
-}).catch((err) => {
-    console.log(err)
-})
+    sequelize.authenticate().then(() => {
+        console.log('successfully connected to database')
+    }).catch(err => {
+        throw new Error(err)
+    })
 
-module.exports = sequelize;
+    const models = {
+        Filter: getFilterModel(sequelize, Sequelize),
+    }
+
+    return [sequelize, models]
+}
+
+const disconnectDb = (sequelize) => {
+    sequelize.close().then(() => {
+        console.log(sequelize)
+    })
+}
+
+module.exports = {
+    connectDb: connectDb,
+    disconnectDb: disconnectDb
+}
