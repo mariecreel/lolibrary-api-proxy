@@ -2,6 +2,8 @@
 
 Node.js and express based API to serve filter data for lolibrary.org search API.
 
+Hosted on Heroku. Base URL:
+
 ## rationale
 
 While the lolibrary search API is public, the list of filter values for each filter parameter is locked behind a password protected private API. I wanted to avoid having users log in to use the mobile lolibrary search app that I'm building, so I decided to create my own database and filter API instead.
@@ -85,7 +87,7 @@ Returns an object containing all possible values for the year filter (an array o
 
 ### `POST /filters/import`
 
-Accepts a JSON payload as input and inserts values into the connected database.
+Accepts a JSON payload as input and inserts values into the connected database. This endpoint requires bearer token authorization (fullfilled by auth0 auth server).
 
 ## TODO
 
