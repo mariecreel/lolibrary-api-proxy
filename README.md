@@ -2,7 +2,7 @@
 
 Node.js and express based API to serve filter data for lolibrary.org search API.
 
-Hosted on Heroku. Base URL:
+Hosted on Heroku. Base URL: https://lovelace-db-api.herokuapp.com
 
 ## rationale
 
