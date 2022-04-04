@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const { checkJwt, checkScopes } = require('../utility/auth')
+const { checkJwt, checkScopes } = require('../../utility/auth')
 
 router.get('/', (req, res) => {
     res.send('get all filters')
