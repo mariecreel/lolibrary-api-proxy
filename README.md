@@ -90,9 +90,3 @@ Returns an object containing all possible values for the year filter (an array o
 ### `POST /filters/import`
 
 Accepts a JSON payload as input and inserts values into the connected database. This endpoint requires bearer token authorization (fullfilled by auth0 auth server).
-
-## TODO
-
-- add support for search parameters within each route as needed. e.g, `/filters/brand?name=angelic`
-- pagination
-- openAPI spec
