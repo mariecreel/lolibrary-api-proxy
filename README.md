@@ -4,6 +4,8 @@ Node.js and express based API to serve filter data for lolibrary.org search API.
 
 Hosted on Heroku. Base URL: https://lovelace-db-api.herokuapp.com
 
+**Currently a WIP!**
+
 ## rationale
 
 While the lolibrary search API is public, the list of filter values for each filter parameter is locked behind a password protected private API. I wanted to avoid having users log in to use the mobile lolibrary search app that I'm building, so I decided to create my own database and filter API instead.
