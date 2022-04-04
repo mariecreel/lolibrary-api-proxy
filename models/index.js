@@ -1,14 +1,8 @@
 const Sequelize = require('sequelize')
-const getFilterModel = require('./filter')
+const getFilterModel = require('./filters')
 
 const connectDb = () => {
     const sequelize = new Sequelize(process.env.DATABASE_URL + '?sslmode=no-verify')
-
-    sequelize.authenticate().then(() => {
-        console.log('successfully connected to database')
-    }).catch(err => {
-        throw new Error(err)
-    })
 
     const models = {
         Filter: getFilterModel(sequelize, Sequelize),
@@ -18,9 +12,7 @@ const connectDb = () => {
 }
 
 const disconnectDb = (sequelize) => {
-    sequelize.close().then(() => {
-        console.log(sequelize)
-    })
+    sequelize.close()
 }
 
 module.exports = {
