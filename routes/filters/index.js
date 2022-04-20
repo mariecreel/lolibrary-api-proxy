@@ -3,29 +3,7 @@ const router = express.Router()
 const { checkJwt, checkScopes } = require('../../utility/auth')
 const importController = require('../../controllers/import')
 const { param, body, validationResult } = require('express-validator')
-
-const checkAllowedFilters = value => {
-    const _allowedFilters = {
-        'year': 1,
-        'colorway': 1,
-        'tags': 1, 
-        'brand': 1,
-        'category': 1,
-        'features': 1
-    }
-    return typeof _allowedFilters[value] !== 'undefined'
-}
-
-const checkImport = importData => {
-    let isValid = true
-    for (const key of Object.keys(importData)) {
-        if (!checkAllowedFilters(key)) {
-            isValid = false
-            break
-        }
-    }
-    return isValid
-}
+const { checkAllowedFilters, checkImport } = require('../../utility/validator')
 
 router.get('/', (req, res) => {
     res.send('get all filters')
@@ -53,9 +31,9 @@ router.post('/import',
             // then sanitize/validate input
             body()
                  .isObject()
+                 .bail()
                  .custom(checkImport),
             (req, res) => {
-    
     const errors = validationResult(req)
     if (errors.isEmpty()) {
         importController(req, res)
