@@ -7,7 +7,7 @@ const { param, body, validationResult } = require('express-validator')
 const { checkAllowedFilters, checkImport } = require('../../utility/validator')
 
 router.get('/', (req, res) => {
-    res.send('get all filters')
+    allFiltersController(req, res)
 })
 
 router.get('/:name',
