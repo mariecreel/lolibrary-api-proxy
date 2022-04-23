@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const { checkJwt, checkScopes } = require('../../utility/auth')
 const importController = require('../../controllers/import')
+const { filterController, allFiltersController } = require('../../controllers/filters')
 const { param, body, validationResult } = require('express-validator')
 const { checkAllowedFilters, checkImport } = require('../../utility/validator')
 
@@ -19,7 +20,7 @@ router.get('/:name',
     (req, res) => {
     const errors = validationResult(req)
     if (errors.isEmpty()) {
-        res.send(`get ${req.params['name']}`)
+        filterController(req, res) 
     } else {
         res.status(422).send()
     }
