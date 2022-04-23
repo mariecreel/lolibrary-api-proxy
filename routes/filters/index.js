@@ -1,10 +1,13 @@
+// external modules
 const express = require('express')
-const router = express.Router()
+const { param, body, validationResult } = require('express-validator')
+// internal modules
 const { checkJwt, checkScopes } = require('../../utility/auth')
 const importController = require('../../controllers/import')
 const { filterController, allFiltersController } = require('../../controllers/filters')
-const { param, body, validationResult } = require('express-validator')
 const { checkAllowedFilters, checkImport } = require('../../utility/validator')
+// other constants
+const router = express.Router()
 
 router.get('/', (req, res) => {
     allFiltersController(req, res)
