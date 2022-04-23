@@ -7,6 +7,7 @@ const allFiltersController = async (req, res) => {
     const values = await models.Filter.findAll({
         attributes: ['type', 'value']
     })
+    db.disconnectDb(sequelize)
     values.forEach(result => {
         if (typeof resBody[result.type] == 'undefined') {
             resBody[result.type] = []
@@ -15,7 +16,7 @@ const allFiltersController = async (req, res) => {
     })
     res.status(200).json(resBody)
 }
-
+// return values for a specific filter
 const filterController = async (req, res) => {
     const resBody = {}
     const filterType = req.params['name']
@@ -27,6 +28,7 @@ const filterController = async (req, res) => {
             type: filterType
         }
     })
+    db.disconnectDb(sequelize)
     values.forEach(result => {
         resBody[filterType].push(result.value)
     })
