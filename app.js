@@ -13,5 +13,10 @@ const limiter = rateLimit({
 app.use(bodyParser.json())
 app.use(limiter)
 app.use('/filters', filters)
+// only open a connection if we're running our server directly from the command line
+// this way, we don't get a warning for open handles when running Jest
+if (require.main === module) {
+    app.listen(process.env.PORT || 3000, console.log("Server is running"));
+}
 
-app.listen(process.env.PORT || 3000, console.log("Server is running"));
+module.exports = app
